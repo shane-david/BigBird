@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -14,15 +15,20 @@ public class EnemyAI : MonoBehaviour
     public float maxAttackCoolDown = 10f; 
     public float minAttackCoolDown = 4.0f; 
 
+    //list for randomization of attacks
+    public enum AttackTypes { ShootBullet, SpawnBirds, ChargeAttack, Lunge }
+    public List<AttackTypes> attacks = new(); 
+
     //private variables 
     //-----------------
     private string attackHappening = "NONE"; 
+    private int phase = 1; 
     private float countDown = 0f; 
     private float upperBound = 0.0f;
-    private float lowerBound = 0.0f; 
 
     //movement 
     private Vector2 startPos; 
+    private float height; 
 
     //private methods
     //---------------
@@ -39,10 +45,11 @@ public class EnemyAI : MonoBehaviour
         //initilaze startPos
         startPos = transform.position; 
 
+        //initialize height 
+        height = GetComponent<SpriteRenderer>().bounds.size.y; 
+
         //get the camera upper and lower bounds 
-        upperBound = mainCamera.transform.position.y + mainCamera.orthographicSize; 
-        lowerBound = mainCamera.transform.position.y - mainCamera.orthographicSize; 
-        Debug.Log("Upper Bound: " + upperBound + " Lower Bound: " + lowerBound); 
+        upperBound = mainCamera.transform.position.y + mainCamera.orthographicSize - (height/2); 
 
         //set the countdown properly when the object is crated 
         countDown = UnityEngine.Random.Range(minAttackCoolDown, maxAttackCoolDown+1); 
@@ -52,6 +59,7 @@ public class EnemyAI : MonoBehaviour
     {
         Move(); 
         Timer(); 
+        DoAttack(); 
     }
 
     private void Timer()
@@ -82,33 +90,70 @@ public class EnemyAI : MonoBehaviour
     private void RandomizeAttack()
     {
 
-        Debug.Log("Randomized"); 
+        //randomly pick an attack
+        var chosenAttack = attacks[UnityEngine.Random.Range(0, attacks.Count)]; 
+
+        //set the current attack variable depening on result 
+        switch (chosenAttack)
+        {
+            case AttackTypes.ShootBullet: 
+                attackHappening = "ShootBullet";
+                break; 
+            case AttackTypes.SpawnBirds:
+                attackHappening = "SpawnBirds";
+                break;
+            case AttackTypes.Lunge:
+                attackHappening = "Lunge";
+                break;
+            case AttackTypes.ChargeAttack:
+                attackHappening = "ChargeAttack";
+                break; 
+            default:
+                Debug.LogError("Unknown Attack Type"); 
+                break; 
+        }
 
     }
 
     private void DoAttack()
     {
-        
+        switch(attackHappening)
+        {
+            case "ShootBullet":
+                ShootBullet();
+                break; 
+            case "SpawnBirds":
+                SpawnBirds();
+                break;
+            case "Lunge":
+                Lunge();
+                break;
+            case "ChargeAttack":
+                ChargeAttack();
+                break; 
+        }
     }
 
     private void ShootBullet()
     {
-        
+        Debug.Log("Shooting Bullet");
     }
 
     private void SpawnBirds()
     {
+        Debug.Log("Spawning Birds");
         
     }
 
     private void ChargeAttack()
     {
+        Debug.Log("Charging");
         
     }
 
     private void Lunge()
     {
-        
+        Debug.Log("Lunging");
     }
 
     private void Move()
