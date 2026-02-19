@@ -18,7 +18,8 @@ public class BulletHome : MonoBehaviour
     }
 
     private void Move()
-    {
+    {   
+
         //get direction towards target
         Vector2 targetDirection = (target.position - transform.position).normalized; 
 
