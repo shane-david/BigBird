@@ -15,20 +15,35 @@ public class EnemyAI : MonoBehaviour
     public float maxAttackCoolDown = 10f; 
     public float minAttackCoolDown = 4.0f; 
 
-    //list for randomization of attacks
-    public enum AttackTypes { ShootBullet, SpawnBirds, ChargeAttack, Lunge }
-    public List<AttackTypes> attacks = new(); 
+    //array for attacks 
+    [SerializeField] List<Attack> attacksPhase1; 
+
 
     //private variables 
     //-----------------
-    private string attackHappening = "NONE"; 
-    private int phase = 1; 
+
+    //to determine what attack is happening
+    private bool attackHappening = false; 
+
+    //to determine what phase of the fight the player is in 
+    //private int phase = 1; 
+
+    //count down between attacks 
     private float countDown = 0f; 
-    private float upperBound = 0.0f;
 
     //movement 
-    private Vector2 startPos; 
+
+    //track the enemy postion 
+    private Vector2 startPos;
+
+    //how tall the enemy is for bounds checking 
     private float height; 
+
+    //how far from center of the enemy to top of the camera 
+    private float upperBound = 0.0f;
+
+
+
 
     //private methods
     //---------------
@@ -38,17 +53,16 @@ public class EnemyAI : MonoBehaviour
         //if the camera was not selected 
         if (mainCamera == null)
         {
-            Debug.LogError("Camer not Found!");
+            Debug.LogError("Camera Not Found!");
             return; 
         }
 
-        //initilaze startPos
-        startPos = transform.position; 
+        //initilaze startPos (make sure they start at 0 on the y)
+        transform.position = new Vector2(transform.position.x, 0); 
+        startPos = transform.position;
 
-        //initialize height 
+        //initialize height and use it to set camera upper bound
         height = GetComponent<SpriteRenderer>().bounds.size.y; 
-
-        //get the camera upper and lower bounds 
         upperBound = mainCamera.transform.position.y + mainCamera.orthographicSize - (height/2); 
 
         //set the countdown properly when the object is crated 
@@ -59,13 +73,12 @@ public class EnemyAI : MonoBehaviour
     {
         Move(); 
         Timer(); 
-        DoAttack(); 
     }
 
     private void Timer()
     {   
         //if there is not an attack currently happening keep counting down 
-        if (attackHappening == "NONE")
+        if (!attackHappening)
         {   
             //if there is time left 
             if ( countDown > 0 )
@@ -76,6 +89,9 @@ public class EnemyAI : MonoBehaviour
 
             } else
             {
+                
+                //ensure countdown is 0 for readability
+                countDown = 0f; 
                 
                 //pick a random attack to do 
                 RandomizeAttack(); 
@@ -90,76 +106,29 @@ public class EnemyAI : MonoBehaviour
     private void RandomizeAttack()
     {
 
-        //randomly pick an attack
-        var chosenAttack = attacks[UnityEngine.Random.Range(0, attacks.Count)]; 
+        //TODO determine what list to pick from depending on phase 
 
-        //set the current attack variable depening on result 
-        switch (chosenAttack)
-        {
-            case AttackTypes.ShootBullet: 
-                attackHappening = "ShootBullet";
-                break; 
-            case AttackTypes.SpawnBirds:
-                attackHappening = "SpawnBirds";
-                break;
-            case AttackTypes.Lunge:
-                attackHappening = "Lunge";
-                break;
-            case AttackTypes.ChargeAttack:
-                attackHappening = "ChargeAttack";
-                break; 
-            default:
-                Debug.LogError("Unknown Attack Type"); 
-                break; 
-        }
+        //get attack from list randomly
+        Attack currentAttack = attacksPhase1[UnityEngine.Random.Range(0, attacksPhase1.Count)];
+        Debug.Log(currentAttack.getAttackName() + " Selected"); 
 
-    }
+        //enable attack (attack will handle its own disabling) 
+        /*
+         *NOTE: we are passing in a function that disables attackHappening
+         *this is handled within each attack and is called at the end of every attack 
+         *this ensures that the timer starts to count again after an attack finishes 
+        */
+        currentAttack.Begin(() => {attackHappening = false;}); 
 
-    private void DoAttack()
-    {
-        switch(attackHappening)
-        {
-            case "ShootBullet":
-                ShootBullet();
-                break; 
-            case "SpawnBirds":
-                SpawnBirds();
-                break;
-            case "Lunge":
-                Lunge();
-                break;
-            case "ChargeAttack":
-                ChargeAttack();
-                break; 
-        }
-    }
 
-    private void ShootBullet()
-    {
-        Debug.Log("Shooting Bullet");
-    }
-
-    private void SpawnBirds()
-    {
-        Debug.Log("Spawning Birds");
-        
-    }
-
-    private void ChargeAttack()
-    {
-        Debug.Log("Charging");
-        
-    }
-
-    private void Lunge()
-    {
-        Debug.Log("Lunging");
     }
 
     private void Move()
     {   
         //get a new Y position use Sin to get it to oscillate up and down
         float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * upperBound;
+
+        //set the y position 
         transform.position = new Vector2(startPos.x , newY);  
     }
 }
