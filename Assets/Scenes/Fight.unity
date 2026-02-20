@@ -318,6 +318,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!4 &1160635394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3208906323687578208, guid: 3a80a997899847c43924efa65dace509, type: 3}
+  m_PrefabInstance: {fileID: 1973374924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1330446108 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4672848951118474156, guid: 3a80a997899847c43924efa65dace509, type: 3}
@@ -329,6 +334,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8614a2879b0af0c44b45ae346559ff00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootBullets
+--- !u!1 &1348715841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1348715843}
+  - component: {fileID: 1348715842}
+  m_Layer: 0
+  m_Name: BirdSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1348715842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348715841}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0a0e5505d339f43ad029f487349fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnBirds
+  numBirds: 5
+  birdTimer: 0.5
+  birds: []
+  birdPrefab: {fileID: 1756756786875343419, guid: 406ced7d30a418e46b9dc2a37c072bec, type: 3}
+  mainCamera: {fileID: 52485187}
+--- !u!4 &1348715843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348715841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1160635394}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1973374924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,16 +452,51 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 52485187}
     - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: maxAttackCoolDown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: minAttackCoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
       propertyPath: attacksPhase1.Array.size
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
       propertyPath: 'attacksPhase1.Array.data[0]'
       value: 
       objectReference: {fileID: 1330446108}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: 'attacksPhase1.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1330446108}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: 'attacksPhase1.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1330446108}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: 'attacksPhase1.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1330446108}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: 'attacksPhase1.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1348715842}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: 'attacksPhase1.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1348715842}
+    - target: {fileID: 6480625039536472805, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      propertyPath: 'attacksPhase1.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1348715842}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3208906323687578208, guid: 3a80a997899847c43924efa65dace509, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1348715843}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a80a997899847c43924efa65dace509, type: 3}
 --- !u!1660057539 &9223372036854775807
