@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletHome
   moveSpeed: 5
-  lifeSpan: 5
+  lifeSpan: 2
   target: {fileID: 0}
