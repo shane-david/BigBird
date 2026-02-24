@@ -55,7 +55,12 @@ public class ShootBullets : Attack
             return; 
         }
 
-        //TODO make sure homing bullet prefab exists
+        //make sure homing bullet prefab exists
+        if (bulletHomePrefab == null)
+        {
+            Debug.LogError("Need to Define homing bullet prefab!");
+            return; 
+        }
     }
 
     private void Update()
