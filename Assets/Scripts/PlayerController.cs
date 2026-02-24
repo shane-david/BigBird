@@ -1,5 +1,7 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
@@ -15,6 +17,11 @@ public class PlayerController : MonoBehaviour
 
     //should the player be constantly damaged in update?
     private bool constantDamage = false; 
+
+    //cooldown and time for player to not shoot constantly
+    [SerializeField] private float shootCooldown;
+    private float timer = 0f; 
+
  
 
     // Update is called once per frame
@@ -29,10 +36,20 @@ public class PlayerController : MonoBehaviour
             ChangeHealth(-.01f);
         }
 
-        if (Input.GetButtonDown("FireBullet"))
-        {
+        if (Input.GetButtonDown("FireBullet") && timer == 0)
+        {   
             Instantiate(Bullet, transform.position, Quaternion.identity);
+            timer = shootCooldown; 
         }
+
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime; 
+        } else
+        {
+            timer = 0; 
+        }
+
     }
 
     //initialize health and chekc that prefab exists
@@ -67,6 +84,12 @@ public class PlayerController : MonoBehaviour
     {
         health += change; 
         healthBar.SetHealth(health); 
+
+        //check for health and go to game over if 0 
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("GameOver"); 
+        }
     }
 
     public void EnableConstantDamage()

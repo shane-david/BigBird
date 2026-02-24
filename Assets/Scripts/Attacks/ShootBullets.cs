@@ -102,6 +102,7 @@ public class ShootBullets : Attack
                     //create homing bullet and set target transform
                     GameObject bullet = Instantiate(bulletHomePrefab, transform.position, Quaternion.identity);
                     bullet.GetComponent<BulletHome>().target = playerTransform; 
+                    Debug.Log("here");
 
                 //otherwise create normal bullet
                 } else

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -154,11 +155,17 @@ public class EnemyAI : MonoBehaviour
     }
 
     //change the player's health variable and the UI
-    private void SetHealth(float change)
+    public void SetHealth(float change)
     {   
         
         health += change;
         healthBar.SetHealth(health); 
+
+        //go to victory if the enemy health is 0 
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("Victory");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

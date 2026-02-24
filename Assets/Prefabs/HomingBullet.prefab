@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1983122342693742402, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.429562
+      value: -9.216
       objectReference: {fileID: 0}
     - target: {fileID: 1983122342693742402, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.598839
+      value: -0.052
       objectReference: {fileID: 0}
     - target: {fileID: 1983122342693742402, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66,22 +66,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3615700353309396692, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
+    - {fileID: -3214666662834387216, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8158080759315675869, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4696129882726320821}
-    - targetCorrespondingSourceObject: {fileID: 8158080759315675869, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8643226712220421928}
+      addedObject: {fileID: -8081983423149073789}
   m_SourcePrefab: {fileID: 100100000, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
 --- !u!1 &541956928968952600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8158080759315675869, guid: 2ee00d9dcc7e0324782399e32b5b13e8, type: 3}
   m_PrefabInstance: {fileID: 8552962202229027269}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4696129882726320821
+--- !u!114 &-8081983423149073789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,52 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletHome
   moveSpeed: 5
-  lifeSpan: 2
+  lifeSpan: 3
   damage: -2
   target: {fileID: 0}
---- !u!61 &8643226712220421928
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541956928968952600}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
