@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
+    [SerializeField] GameObject Bullet;
+    public float speed = 5.0f;
     public Rigidbody2D rb;
 
     float horizontalMovement;
@@ -42,6 +44,11 @@ public class PlayerController : MonoBehaviour
 
         //set the maxhealth of the health bar for UI purposes
         healthBar.SetMaxHealth(maxHealth); 
+        if (Input.GetButtonDown("FireBullet"))
+        {
+            Instantiate(Bullet, transform.position, Quaternion.identity);
+        }
+
     }
 
     public void Move(InputAction.CallbackContext context)
