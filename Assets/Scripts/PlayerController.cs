@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
         {
             ChangeHealth(-.01f);
         }
+
+        if (Input.GetButtonDown("FireBullet"))
+        {
+            Instantiate(Bullet, transform.position, Quaternion.identity);
+        }
     }
 
     //initialize health and chekc that prefab exists
