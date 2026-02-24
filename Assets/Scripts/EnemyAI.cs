@@ -42,6 +42,9 @@ public class EnemyAI : MonoBehaviour
     //how far from center of the enemy to top of the camera 
     private float upperBound = 0.0f;
 
+    //current attack
+    private Attack currentAttack; 
+
 
 
 
@@ -49,7 +52,7 @@ public class EnemyAI : MonoBehaviour
     //---------------
 
     private void Start()
-    {    
+    {   
         //if the camera was not selected 
         if (mainCamera == null)
         {
@@ -96,6 +99,9 @@ public class EnemyAI : MonoBehaviour
                 //pick a random attack to do 
                 RandomizeAttack(); 
 
+                //set attack happening to true so it does not pick another attack 
+                attackHappening = true; 
+
                 //randomly generate a new attack cooldown
                 countDown = UnityEngine.Random.Range(minAttackCoolDown, maxAttackCoolDown+1); 
 
@@ -109,7 +115,7 @@ public class EnemyAI : MonoBehaviour
         //TODO determine what list to pick from depending on phase 
 
         //get attack from list randomly
-        Attack currentAttack = attacksPhase1[UnityEngine.Random.Range(0, attacksPhase1.Count)];
+        currentAttack = attacksPhase1[UnityEngine.Random.Range(0, attacksPhase1.Count)];
         Debug.Log(currentAttack.getAttackName() + " Selected"); 
 
         //enable attack (attack will handle its own disabling) 
@@ -118,17 +124,21 @@ public class EnemyAI : MonoBehaviour
          *this is handled within each attack and is called at the end of every attack 
          *this ensures that the timer starts to count again after an attack finishes 
         */
-        currentAttack.Begin(() => {attackHappening = false;}); 
+        currentAttack.Begin(() => {attackHappening = false;
+                                     currentAttack = null; }); 
 
 
     }
 
     private void Move()
     {   
-        //get a new Y position use Sin to get it to oscillate up and down
-        float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * upperBound;
+        //stop the oscillation when lunge attack is active 
+        if (currentAttack?.getAttackName() != "Lunge" && currentAttack?.getAttackName() != "Charge") {
+            //get a new Y position use Sin to get it to oscillate up and down
+            float newY = startPos.y + Mathf.Sin(Time.time * moveSpeed) * upperBound;
 
-        //set the y position 
-        transform.position = new Vector2(startPos.x , newY);  
+            //set the y position 
+            transform.position = new Vector2(startPos.x , newY);  
+        } 
     }
 }
