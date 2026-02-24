@@ -4,7 +4,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
     [SerializeField] GameObject Bullet;
-    public float speed = 5.0f;
     public Rigidbody2D rb;
 
     float horizontalMovement;
