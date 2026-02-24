@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
@@ -16,4 +18,6 @@ public class CameraManager : MonoBehaviour
             transform.position = smoothedPosition;
         }
     }
+
+
 }
