@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     public float maxAttackCoolDown = 10f; 
     public float minAttackCoolDown = 4.0f; 
 
+    public float health, maxHealth; 
+
     //array for attacks 
     [SerializeField] List<Attack> attacksPhase1; 
 
@@ -45,6 +47,12 @@ public class EnemyAI : MonoBehaviour
     //current attack
     private Attack currentAttack; 
 
+    //to change the health bar 
+    [SerializeField] HealthBarUI healthBar; 
+
+    //how much damage the enemy does to the player
+    [SerializeField] private float damage = -10f; 
+
 
 
 
@@ -70,6 +78,9 @@ public class EnemyAI : MonoBehaviour
 
         //set the countdown properly when the object is crated 
         countDown = UnityEngine.Random.Range(minAttackCoolDown, maxAttackCoolDown+1); 
+
+        //set the max health 
+        healthBar.SetMaxHealth(maxHealth); 
     }
 
     private void Update()
@@ -125,7 +136,7 @@ public class EnemyAI : MonoBehaviour
          *this ensures that the timer starts to count again after an attack finishes 
         */
         currentAttack.Begin(() => {attackHappening = false;
-                                     currentAttack = null; }); 
+                                      currentAttack = null;}); 
 
 
     }
@@ -140,5 +151,22 @@ public class EnemyAI : MonoBehaviour
             //set the y position 
             transform.position = new Vector2(startPos.x , newY);  
         } 
+    }
+
+    //change the player's health variable and the UI
+    private void SetHealth(float change)
+    {   
+        
+        health += change;
+        healthBar.SetHealth(health); 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            PlayerController player = collision.GetComponent<PlayerController>(); 
+            player.ChangeHealth(damage); 
+        }
     }
 }

@@ -7,6 +7,7 @@ public class BulletHome : MonoBehaviour
     //-----------------
     [SerializeField] private float moveSpeed = 5; 
     [SerializeField] private float lifeSpan = 0f; 
+    [SerializeField] private float damage = -2f; 
 
     //public variables
     //-----------------
@@ -19,6 +20,17 @@ public class BulletHome : MonoBehaviour
     {
         Move(); 
         sLifespan(); 
+    }
+
+    //destroy and decrase player health 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {   
+            PlayerController player = collision.GetComponent<PlayerController>(); 
+            player.ChangeHealth(damage); 
+            Destroy(gameObject); 
+        }
     }
 
     private void Move()

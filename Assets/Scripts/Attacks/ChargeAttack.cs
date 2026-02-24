@@ -13,6 +13,7 @@ public class ChargeAttack : Attack
     //our particular charge instance
     [SerializeField]private GameObject bigBullet; 
 
+
     //constructor
     //-----------
     ChargeAttack()
@@ -58,7 +59,7 @@ public class ChargeAttack : Attack
             bigBullet.transform.localScale += new Vector3(growSpeed, growSpeed, 0f); 
 
         //once we reach max size grow and exit 
-        } else 
+        } else if (bigBullet != null)
         {
             //remove the moving script from the instance 
             bigBullet.GetComponent<BulletMove>().enabled = true;
@@ -67,5 +68,7 @@ public class ChargeAttack : Attack
             onFinished();
             enabled = false; 
         }
+
     }
+
 }
