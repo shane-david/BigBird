@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject Bullet;
     public float speed = 5.0f;
     public Rigidbody2D rb;
 
@@ -19,6 +20,11 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = new Vector3(horizontalMovement * speed, verticalMovement * speed, rb.linearVelocity.y);
 
+        if (Input.GetButtonDown("FireBullet"))
+        {
+            Instantiate(Bullet, transform.position, Quaternion.identity);
+        }
+
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -27,4 +33,5 @@ public class PlayerController : MonoBehaviour
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
 
+   
 }
