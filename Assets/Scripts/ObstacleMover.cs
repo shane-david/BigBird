@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class ObstacleMover : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody2D rb;
+    public int timeAlive = 5;
+
+    public float speed;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, timeAlive);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 }
