@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Charge
   - Enemy
+  - Clickable
   layers:
   - Default
   - TransparentFX
