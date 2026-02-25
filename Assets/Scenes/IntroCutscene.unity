@@ -874,6 +874,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1841532826}
   dialoguePanel: {fileID: 1580034365}
   typingSpeed: 0.05
+  birdSelectionPanel: {fileID: 0}
+  nextButton: {fileID: 0}
   cutsceneDirector: {fileID: 21178499}
   introDialogue:
   - characterName: Bad Guy
@@ -892,6 +894,7 @@ MonoBehaviour:
   - characterName: King
     sentence: Outrageous! How could that man. . . no not now, now birds. . . We have
       to summon the man who conquer the birds at once. He must ride them once more!
+  Bird1Dialogue: []
 --- !u!4 &1160339965
 Transform:
   m_ObjectHideFlags: 0

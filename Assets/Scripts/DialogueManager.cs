@@ -45,7 +45,9 @@ public class DialogueManager : MonoBehaviour
         if (cutsceneDirector != null) cutsceneDirector.Pause();
 
         dialoguePanel.SetActive(true);
-        nextButton.GetComponent<UnityEngine.UI.Button>().interactable = true;
+
+        if (nextButton != null) nextButton.GetComponent<UnityEngine.UI.Button>().interactable = true;
+        
         lines.Clear();
 
         foreach (DialogueLine line in dialogueGroup)
