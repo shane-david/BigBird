@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.05f;
 
     public GameObject birdSelectionPanel; // Panel for bird selection dialogue
-    public CameraManager cameraView; //Camera Object to Change Camera Views during dialogue sequences
+    public GameObject nextButton; 
 
     public PlayableDirector cutsceneDirector; 
 
@@ -43,7 +43,9 @@ public class DialogueManager : MonoBehaviour
     {
            
         if (cutsceneDirector != null) cutsceneDirector.Pause();
+
         dialoguePanel.SetActive(true);
+        nextButton.GetComponent<UnityEngine.UI.Button>().interactable = true;
         lines.Clear();
 
         foreach (DialogueLine line in dialogueGroup)
@@ -59,6 +61,11 @@ public class DialogueManager : MonoBehaviour
         if (lines.Count == 1 && birdSelectionPanel != null) // Show bird selection panel when we reach the last line of the dialogue
         {
             birdSelectionPanel.SetActive(true);
+            //Deactivate Button When on Bird Selection Panel
+            if (nextButton != null)
+            {
+                nextButton.GetComponent<UnityEngine.UI.Button>().interactable = false;
+            }
         }
 
         if (lines.Count == 0)
@@ -91,19 +98,11 @@ public class DialogueManager : MonoBehaviour
             if (birdSelectionPanel != null) {
                 birdSelectionPanel.SetActive(false);
             }
+
             if (cutsceneDirector != null) cutsceneDirector.Resume();
 
             Debug.Log("End of conversation.");
     }
-
-    public void CameraViewChange(string birdName)
-    {
-        if (cameraView != null)
-        {
-            cameraView.target = GameObject.Find(birdName).transform; // Set the camera's target to the selected bird
-        }
-    }
-
 }
 
 

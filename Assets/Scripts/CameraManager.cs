@@ -1,23 +1,39 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+using System.Collections; 
+using UnityEngine.UI; 
 
 public class CameraManager : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset = new Vector3(0f, 0f, -10f);
+    public Camera mainCam; 
+    public float zoomSize = 2f; 
+    public float smoothSpeed = 5f;
 
-    private void LateUpdate()
-    {
-        if (target != null)
-        {
-            Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            
-            transform.position = smoothedPosition;
-        }
+    private float defaultSize;
+    private Vector3 defaultPosition;
+    private float targetSize;
+    private Vector3 targetPosition;
+
+    void Start() {
+        defaultSize = mainCam.orthographicSize;
+        defaultPosition = mainCam.transform.position;
+        targetSize = defaultSize;
+        targetPosition = defaultPosition;
     }
 
+    void Update() {
+        mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, targetSize, Time.deltaTime * smoothSpeed);
+        mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, targetPosition, Time.deltaTime * smoothSpeed);
+    }
 
+   
+    public void ZoomToTarget(Transform target) {
+        targetSize = zoomSize;
+        targetPosition = new Vector3(target.position.x, target.position.y, defaultPosition.z);
+    }
+
+    
+    public void ResetZoom() {
+        targetSize = defaultSize;
+        targetPosition = defaultPosition;
+    }
 }
