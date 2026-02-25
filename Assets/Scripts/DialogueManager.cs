@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     public List<DialogueLine> introDialogue; 
     public List<DialogueLine> introDialogue2; 
     public List<DialogueLine> introDialogue3; 
+     public List<DialogueLine> introDialogue4; 
 
     public List<DialogueLine> Bird1Dialogue; 
     
@@ -37,6 +38,7 @@ public class DialogueManager : MonoBehaviour
     public void StartIntro() => StartDialogue(introDialogue);
     public void StartIntro2() => StartDialogue(introDialogue2);
     public void StartIntro3() => StartDialogue(introDialogue3);
+    public void StartIntro4() => StartDialogue(introDialogue4);
     public void StartBird1Dialogue() => StartDialogue(Bird1Dialogue);
    
     public void StartDialogue(List<DialogueLine> dialogueGroup)

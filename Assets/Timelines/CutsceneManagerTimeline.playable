@@ -37,7 +37,7 @@ MonoBehaviour:
     m_Start: 7.516666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -5489026216843100799}
-    m_Duration: 5.4833333333328325
+    m_Duration: 3.4833333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -8094980893270849764}
     m_EaseInDuration: 0
@@ -860,6 +860,22 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &3316989289109843100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 9.983333333333333
+  m_Retroactive: 0
+  m_EmitOnce: 1
+  m_Asset: {fileID: 11400000, guid: 0102df67a9b8e4547a12d6e26b4bff18, type: 2}
 --- !u!114 &5413064104968356075
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -885,7 +901,7 @@ MonoBehaviour:
     m_Start: 7.95
     m_ClipIn: 0
     m_Asset: {fileID: -6801394942978576931}
-    m_Duration: 5.0499999999995
+    m_Duration: 3.05
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5413064104968356075}
     m_EaseInDuration: 0
@@ -953,6 +969,22 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_PostPlaybackState: 3
+--- !u!114 &5436926158506553009
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 10.083333333333334
+  m_Retroactive: 0
+  m_EmitOnce: 1
+  m_Asset: {fileID: 11400000, guid: e1cc3e850602470498768e7f6959c78e, type: 2}
 --- !u!114 &6958579577612070295
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -995,6 +1027,8 @@ MonoBehaviour:
     - {fileID: -6935280579241920990}
     - {fileID: -7743825827535780701}
     - {fileID: 6958579577612070295}
+    - {fileID: 3316989289109843100}
+    - {fileID: 5436926158506553009}
 --- !u!74 &7325827150006461427
 AnimationClip:
   m_ObjectHideFlags: 0
