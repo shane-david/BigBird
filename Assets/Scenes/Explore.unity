@@ -412,7 +412,7 @@ MonoBehaviour:
   - {fileID: 4312234282714616951, guid: bf63885c44b01cf41a9c033cbfa08ae6, type: 3}
   - {fileID: 2418729866208188732, guid: 64495251fad9e3142b678649b9bf4d71, type: 3}
   SpawnPoints: {fileID: 887417296}
-  SpawnRate: 5
+  SpawnRate: 3
 --- !u!4 &538639750
 Transform:
   m_ObjectHideFlags: 0
