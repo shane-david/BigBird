@@ -14,6 +14,8 @@ public class SceneLoaderScript : MonoBehaviour
 
     private SceneLoaderScript instance;
 
+    //private static int lastGameplaySceneIndex;
+
     private void Awake()
     {
         //sceneFader = GetComponentInChildren<SceneFader>();
@@ -57,7 +59,7 @@ public class SceneLoaderScript : MonoBehaviour
     public void ReloadCurrentScene()
     {
         Debug.Log("Reloading Current Scene");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Fight");
     }
 
     
