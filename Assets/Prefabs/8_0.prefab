@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleMover
   timeAlive: 15
-  speed: 5
+  speed: 7
 --- !u!50 &-1731978311474581148
 Rigidbody2D:
   serializedVersion: 5
