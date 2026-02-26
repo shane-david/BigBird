@@ -321,7 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7838624225567300843}
   - component: {fileID: 9003235551434065400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleMover
   timeAlive: 15
-  speed: 5
+  speed: 7
 --- !u!1 &9096852790335091766
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1151843489
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 061f375fcf5f0d848a8be621e14b67d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
