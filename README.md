@@ -1,0 +1,1 @@
+This project was developed for the prototyping phase of GDD2150 at UCCS. It is a Cuphead style 2D sidescroller game developed in Unity during a 1 week sprint. It showcases a shooting mechanic and a concept boss fight with the 2D sidescroller style. It has been archived because development has finished after the prototype and the project was not selected for future development. 
